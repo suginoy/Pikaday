@@ -213,6 +213,8 @@
         // show week numbers at head of row
         showWeekNumber: false,
 
+        setWeekendClass: false,
+
         // used internally (don't config outside)
         minYear: 0,
         maxYear: 9999,
@@ -295,6 +297,9 @@
         }
         if (opts.isEndRange) {
             arr.push('is-endrange');
+        }
+        if (opts.setWeekendClass) {
+          arr.push('weekend');
         }
         return '<td data-day="' + opts.day + '" class="' + arr.join(' ') + '">' +
                  '<button class="pika-button pika-day" type="button" ' +
@@ -985,6 +990,7 @@
                                  (opts.maxDate && day > opts.maxDate) ||
                                  (opts.disableWeekends && isWeekend(day)) ||
                                  (opts.disableDayFn && opts.disableDayFn(day)),
+                    setWeekendClass = (opts.setWeekendClass && isWeekend(day)),
                     dayConfig = {
                         day: 1 + (i - before),
                         month: month,
@@ -995,7 +1001,8 @@
                         isEmpty: isEmpty,
                         isStartRange: isStartRange,
                         isEndRange: isEndRange,
-                        isInRange: isInRange
+                        isInRange: isInRange,
+                        setWeekendClass: setWeekendClass
                     };
 
                 row.push(renderDay(dayConfig));
