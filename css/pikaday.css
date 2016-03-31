@@ -168,6 +168,10 @@ http://nicolasgallagher.com/micro-clearfix-hack/
     color: #999;
 }
 
+.weekend .pika-button {
+    color: #c05456;
+}
+
 .is-today .pika-button {
     color: #33aaff;
     font-weight: bold;
